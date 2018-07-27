@@ -18,6 +18,11 @@ int main(){
 	double max = 0;
 	int maxindex = 0;
 
+	//颜色集合
+	int scalar_cur = 0;
+	Scalar color[3] = {Scalar(255,0,0),Scalar(0,255,0),Scalar(0,0,255)};
+
+
 	//打开文件
 	freopen("E:\\programs\\c++\\Drawpic\\Drawpic\\pos", "r", stdin);
 	//while (scanf("[%lf, %lf]\n", &a[i], &b[i]) != EOF){
@@ -36,7 +41,9 @@ int main(){
 		if (i == maxindex){
 			continue;
 		}
-		line(img, Point(a[maxindex], b[maxindex]), Point(a[i], b[i]), Scalar(0, 0, 255),3);
+		line(img, Point(a[maxindex], b[maxindex]), Point(a[i], b[i]), color[scalar_cur],3);
+		//三种颜色循环使用
+		scalar_cur = (scalar_cur + 1) % 3;
 	}
 
 	imshow("face",img);
